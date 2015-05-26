@@ -1,8 +1,8 @@
 {
-  "name": "poseidon",
+  "name": "auctionsmith",
   "version": "0.0.1",
-  "homepage": "https://github.com/coding-house-apr2015/poseidon",
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "homepage": "https://github.com/iameddiedean/auction-ang",
+  "author": "Chris Oyler <christopher.oyler@gmail.com>",
   "license": "BSD",
   "devDependencies": {
     "bower": "^1.4.1",
