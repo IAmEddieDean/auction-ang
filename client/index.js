@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('auction', ['firebase', 'ui.router']);
+angular.module('auction', ['ui.router']);
