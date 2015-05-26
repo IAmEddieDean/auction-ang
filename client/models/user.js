@@ -8,22 +8,18 @@ angular.module('auction')
   User.initialize = function(){
     return $http.post(nodeUrl + '/users');
   };
+  
+  User.login = function(info){
+    return $http.post(nodeUrl + '/users/authenticate', info);
+  };
+  
+  User.find = function(info){
+    return $http.get(nodeUrl + '/users/' + info.email + '/' + info.password);
+  };
 
   User.oauth = function(provider){
     return $rootScope.afAuth.$authWithOAuthPopup(provider);
   };
-
-  User.register = function(user){
-    return $rootScope.afAuth.$createUser(user);
-  };
-
-  User.login = function(user){
-    return $rootScope.afAuth.$authWithPassword(user);
-  };
-
-  User.logout = function(){
-    return $rootScope.afAuth.$unauth();
-  };
-
+  
   return User;
 });

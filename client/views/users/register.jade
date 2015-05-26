@@ -1,0 +1,38 @@
+h3 Register page
+.row
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4.col-lg-offset-2
+    form(name='userForm', novalidate)
+      .form-group
+        label(for='email') Email
+        input.form-control#email(type='email', name='email', ng-model='user.email')
+      .form-group
+        label(for='password1') Password
+        input.form-control#password(type='password', name='password1', ng-model='user.password1')
+      .form-group
+        label(for='password2') Verify Password
+        input.form-control#password(type='password', name='password2', ng-model='user.password2')
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4
+      .form-group
+        label(for='phone') Phone Number
+        input.form-control(type='tel', name='phone', ng-model='user.phone')
+      .form-group
+        label(for='street') Street Address
+        input.form-control(type='text', name='street', ng-model='user.street')
+      .col-xs-12.col-md-6.addy
+        .form-group
+          label(for='city') City
+          input.form-control(type='text', name='city', ng-model='user.city')
+      .col-xs-12.col-md-2      
+        .form-group
+          label(for='state') State
+          .dropdown
+            button#dropdownMenu1.btn.btn-block.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true' ng-options='state in states', ng-model='user.state')
+              span.caret
+      .col-xs-12.col-md-4.addy
+        .form-group
+          label(for='zip') Zip Code
+          input.form-control(type='number', name='zip', ng-model='user.zip')
+  .col-xs-12.col-lg-8.col-lg-offset-2
+    .form-group
+        button.btn.btn-success.btn-block(ng-click='register(user)') Register
+      
