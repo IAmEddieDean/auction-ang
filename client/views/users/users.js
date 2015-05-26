@@ -20,4 +20,8 @@ angular.module('auction')
       $window.swal({title: 'Login Error', text: 'There was a problem with your login. Please try again.', type: 'error'});
     });
   };
+  
+  $scope.register = function(user){
+    console.log(user);
+  };
 });

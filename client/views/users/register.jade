@@ -1,4 +1,6 @@
-h3 Register page
+h3.text-center New User Registration
+br
+br
 .row
   .col-xs-12.col-sm-6.col-md-6.col-lg-4.col-lg-offset-2
     form(name='userForm', novalidate)
@@ -22,13 +24,12 @@ h3 Register page
         .form-group
           label(for='city') City
           input.form-control(type='text', name='city', ng-model='user.city')
-      .col-xs-12.col-md-2      
+      .col-xs-12.col-md-3
         .form-group
           label(for='state') State
-          .dropdown
-            button#dropdownMenu1.btn.btn-block.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='true' ng-options='state in states', ng-model='user.state')
-              span.caret
-      .col-xs-12.col-md-4.addy
+          select.form-control#states(ng-options='state as state for state in states', ng-model='user.state')
+            option
+      .col-xs-12.col-md-3.addy
         .form-group
           label(for='zip') Zip Code
           input.form-control(type='number', name='zip', ng-model='user.zip')
