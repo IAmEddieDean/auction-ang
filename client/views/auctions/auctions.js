@@ -23,5 +23,5 @@ angular.module('auction')
     }).catch(function(err){
       console.log(err);
     });
-  }
+  };
 });

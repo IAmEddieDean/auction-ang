@@ -1,0 +1,101 @@
+h3.text-center Auction List View
+br
+.panel.panel-default
+  // Default panel contents
+  .panel-heading.text-center Sort Listings By:
+  .panel-body
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') Auctions
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') Categories
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') Current Price
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') End Time
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+.row#itemCard
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(src='http://placehold.it/200x125' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      //{{item.title | limitTo: stringLimit}} how to limit the text length later on.
+      h5 Item Title: Some Kind of Gibberish 
+      h5 Lot: 123
+      h5 Item Description: Some more kind of gibberish that needs to be limited.
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      h5 Current Price: $100.20
+      h5 Ending Time: {{1433028924000 | date: 'medium'}}
+    .col-xs-12.col-md-4.col-lg-3
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') BID NOW!
+.row#itemCard
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(src='http://placehold.it/200x125' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      //{{item.title | limitTo: stringLimit}} how to limit the text length later on.
+      h5 Item Title: Some Kind of Gibberish 
+      h5 Lot: 123
+      h5 Item Description: Some more kind of gibberish that needs to be limited.
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      h5 Current Price: $100.20
+    .col-xs-12.col-md-4.col-lg-3
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') BID NOW!
+.row#itemCard
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(src='http://placehold.it/200x125' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      //{{item.title | limitTo: stringLimit}} how to limit the text length later on.
+      h5 Item Title: Some Kind of Gibberish 
+      h5 Lot: 123
+      h5 Item Description: Some more kind of gibberish that needs to be limited.
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      h5 Current Price: $100.20
+    .col-xs-12.col-md-4.col-lg-3
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') BID NOW!
+.row#itemCard
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(src='http://placehold.it/200x125' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      //{{item.title | limitTo: stringLimit}} how to limit the text length later on.
+      h5 Item Title: Some Kind of Gibberish 
+      h5 Lot: 123
+      h5 Item Description: Some more kind of gibberish that needs to be limited.
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      h5 Current Price: $100.20
+    .col-xs-12.col-md-4.col-lg-3
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') BID NOW!
+.row#itemCard
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(src='http://placehold.it/200x125' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      //{{item.title | limitTo: stringLimit}} how to limit the text length later on.
+      h5 Item Title: Some Kind of Gibberish 
+      h5 Lot: 123
+      h5 Item Description: Some more kind of gibberish that needs to be limited.
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      h5 Current Price: $100.20
+    .col-xs-12.col-md-4.col-lg-3
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') BID NOW!
+.row#itemCard
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(src='http://placehold.it/200x125' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      //{{item.title | limitTo: stringLimit}} how to limit the text length later on.
+      h5 Item Title: Some Kind of Gibberish 
+      h5 Lot: 123
+      h5 Item Description: Some more kind of gibberish that needs to be limited.
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      h5 Current Price: $100.20
+    .col-xs-12.col-md-4.col-lg-3
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') BID NOW!
