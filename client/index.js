@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('auction', ['ui.router']);
+angular.module('auction', ['ui.router', 'naif.base64']);
