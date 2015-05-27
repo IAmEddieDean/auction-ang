@@ -27,20 +27,20 @@ br
         input.form-control(type='tel', name='phone', ng-model='user.phone')
       .form-group
         label(for='street') Street Address
-        input.form-control(type='text', name='street', ng-model='user.street')
+        input.form-control(type='text', name='street', ng-model='user.address.street')
       .col-xs-12.col-md-6.addy
         .form-group
           label(for='city') City
-          input.form-control(type='text', name='city', ng-model='user.city')
+          input.form-control(type='text', name='city', ng-model='user.address.city')
       .col-xs-12.col-md-3
         .form-group
           label(for='state') State
-          select.form-control#states(ng-options='state as state for state in states', ng-model='user.state')
+          select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
             option
       .col-xs-12.col-md-3.addy
         .form-group
           label(for='zip') Zip Code
-          input.form-control(type='number', name='zip', ng-model='user.zip')
+          input.form-control(type='number', name='zip', ng-model='user.address.zip')
   .col-xs-12.col-lg-8.col-lg-offset-2
     .form-group
         button.btn.btn-success.btn-block(ng-click='register(user)') Register
