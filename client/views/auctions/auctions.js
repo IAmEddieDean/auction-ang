@@ -24,4 +24,40 @@ angular.module('auction')
       console.log(err);
     });
   };
+})
+
+.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item){
+  getItems();
+  getClients();
+
+  $scope.items = [];
+  $scope.clients = [];
+  $scope.auctions = [];
+  // $scope.confirm = false;
+  
+  $scope.bidConfirm = function(item){
+    item.confirm = true;
+    return;
+  };
+
+  function getItems(){
+    Item.findAll()
+    .then(function(resp){
+      $scope.items = resp.data.map(function(item){ item.confirm = false; return item});
+      console.log(resp);
+    }).catch(function(err){
+      // console.log(err);
+    });
+  }
+
+  function getClients(){
+    Client.findAll()
+    .then(function(resp){
+      $scope.clients = resp.data;
+      // console.log(resp);
+    }).catch(function(err){
+      // console.log(err);
+    });
+  }
+
 });

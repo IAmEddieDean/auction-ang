@@ -15,6 +15,6 @@ angular.module('auction')
   .state('dashboard.user', {url: '/dashboard/{lastName}', templateUrl: '/views/users/user-dashboard.html', controller: 'DashboardCtrl'})
   .state('auctions', {url: '', templateUrl: '/views/auctions/auctions.html', abstract: true})
   .state('auctions.add', {url: '/auctions/add', templateUrl: '/views/auctions/additem.html', controller: 'AuctionCtrl'})
-  .state('auctions.list', {url: '/auctions', templateUrl: '/views/auctions/auctions-list.html', controller: 'AuctionCtrl'})
+  .state('auctions.list', {url: '/auctions', templateUrl: '/views/auctions/auctions-list.html', controller: 'AuctionListCtrl'})
   .state('auctions.show', {url: '/auctions/{auctionId}', templateUrl: '/views/auctions/auctions-show.html', controller: 'AuctionCtrl'});
 });
