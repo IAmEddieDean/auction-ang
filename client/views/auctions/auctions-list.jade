@@ -1,0 +1,46 @@
+h3.text-center Auction List View
+br
+.panel.panel-default
+  .panel-heading.text-center Sort Listings By:
+  .panel-body
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') Auctions
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') Categories
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') Current Price
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+    .col-xs-12.col-sm-6.col-md-3.col-lg-3
+      label(for='state') End Time
+      select.form-control#states(ng-options='state as state for state in states', ng-model='user.address.state')
+        option
+.row#itemCard(ng-repeat='item in items track by $index')
+  .col-xs-12
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3
+      img(base-sixty-four-image='item.photo' ui-sref='auctions.show {itemId: item._id}')
+    .col-xs-12.col-sm-6.col-md-4
+      h5: a(ui-sref='auctions.show {itemId: item._id}') {{item.itemTitle}}
+      h5 Lot: {{item.lot}}
+      h5 Item Description: {{item.description | limitTo: 50}}...
+    .col-xs-12.col-sm-6.col-md-4
+      h5 Current Price: {{item.currentPrice | currency}}
+      h5 Ending Time: {{item.endTime | date: 'medium'}}
+    .col-xs-8.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='item.confirm')
+      .row
+        .col-xs-12
+          label(for='amount') Enter bid amount.
+      .row
+        .col-xs-8
+          input.form-control#amount(type='number', name='amount', ng-model='bid', placeholder='{{item.currentPrice * 1.1 | currency}}', min='{{item.currentPrice * 1.05}}')
+        .col-xs-4
+          button.btn.btn-xs.btn-danger.pull-right#cancel(ng-click='bidCancel(item)') Cancel
+    .col-xs-4.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-4.col-lg-offset-3(ng-if='item.confirm')
+    .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='!item.confirm')
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item)') BID NOW!
+    .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='item.confirm')
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') SUBMIT BID!

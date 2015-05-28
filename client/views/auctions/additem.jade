@@ -1,0 +1,51 @@
+h3.text-center Add an Item
+br
+br
+.row 
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    form(name='addItem' novalidate)
+      .form-group
+        label(for='title') Item Title
+        input.form-control(type='text', name='title', ng-model='item.title')
+      .form-group
+        label(for='lot') Lot Number
+        input.form-control(type='text', name='lot', ng-model='item.lot')
+      .form-group
+        label(for='startPrice') Starting Price
+        input.form-control(type='transaction-currency', name='startPrice', ng-model='item.startPrice')
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    .form-group
+      label(for='client') Client Selection
+      select.form-control#states(ng-options='client as client for client in states', ng-model='item.client')
+        option: //a(href='#' ng-click='addNewClient()') Add New Client
+    .form-group
+      label(for='startTime') Starting Time
+      #datetimepicker6.input-group.date
+        input.form-control(type='datetime-local' name='startTime' ng-model='item.startTime')
+        //- span.input-group-addon
+        //-   span.glyphicon.glyphicon-calendar
+    .form-group
+      label(for='endTime') End Time
+      #datetimepicker7.input-group.date
+        input.form-control(type='datetime-local' name='endTime' ng-model='item.endTime')
+        //- span.input-group-addon
+        //-   span.glyphicon.glyphicon-calendar
+  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+    .form-group
+      label(for='description') Item Description
+      textarea.form-control(type='text' name='description' rows='8' ng-model='item.description')
+.row
+  .col-xs-12.col-sm-4.col-md-3.col-lg-3
+    .form-group
+      label(for='photo') Upload Photos
+      input(type='file' name='photo' maxsize="500" base-sixty-four-input ng-model='item.photo')
+      //- span(ng-show='photos.item.photos.$error.maxsize') Files must not exceed 500 KB
+  .col-xs-12.col-sm-7.col-sm-offset-1.col-md-8.col-md-offset-1.col-lg-8.col-lg-offset-1
+    img#photoView(base-sixty-four-image='item.photo')
+    //- .carousel.slide
+    //-   .carousel-inner(role='listbox')
+    //-     .item(ng-repeat='photo in item.photos')
+.row
+  .col-xs-12
+    .form-group
+      button.btn.btn-block.btn-primary#itemBtn(ng-click='add(item)') Save Item

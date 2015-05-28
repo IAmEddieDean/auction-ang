@@ -1,6 +1,34 @@
-.addy{
+@import '/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
+/* @import '/vendor/bootstrap/build/less/variables.css';
+ *//* public/vendor/bootstrap/less/variables.less
+ */.addy{
   padding: 0;
 }
 .caret{
   text-align: right;
+}
+#photoView{
+  max-width: 250px;
+  max-height: 175px;
+  min-height: 175px;
+  margin-bottom: .5em;
+}
+#itemCard{
+  padding: 5px 0 5px 0;
+  img{
+    max-width: 200px;
+    max-height: 125px;
+  }
+  a{
+    color: RGBA(69, 130, 236, 1);
+  }
+  #amount{
+    margin-bottom: .2em;
+  }
+  #cancel{
+    margin-top: .4em;
+  }
+}
+#itemCard:nth-child(even){
+  background-color: RGBA(224, 224, 224, .3);
 }
