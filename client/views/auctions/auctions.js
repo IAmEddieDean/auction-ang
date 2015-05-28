@@ -39,11 +39,15 @@ angular.module('auction')
     item.confirm = true;
     return;
   };
+  $scope.bidCancel = function(item){
+    item.confirm = false;
+    return;
+  };
 
   function getItems(){
     Item.findAll()
     .then(function(resp){
-      $scope.items = resp.data.map(function(item){ item.confirm = false; return item});
+      $scope.items = resp.data.map(function(item){ item.confirm = false; return item; });
       console.log(resp);
     }).catch(function(err){
       // console.log(err);
