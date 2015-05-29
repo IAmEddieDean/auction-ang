@@ -129,9 +129,23 @@ angular.module('auction')
 })
 
 .controller('ItemShowCtrl', function($scope, Item, $state){
+  
+//   $(document).ready(function(){
+//     $("#myTab li:eq(1) a").tab('show');
+// });
   $scope.item = {};
   
   getItem();
+  $scope.confirm = false;
+  
+  $scope.bid = function(item){
+    console.log(item);
+  };
+
+  $scope.bidConfirm = function(arg){
+    $scope.confirm = arg;
+    return;
+  };
   
   function getItem(){
     Item.find($state.params.itemId)
