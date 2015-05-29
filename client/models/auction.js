@@ -5,8 +5,8 @@ angular.module('auction')
 
   function Auction(){}
   
-  Auction.addItem = function(item){
-    return $http.put(nodeUrl + '/auctions');
+  Auction.add = function(auction){
+    return $http.post(nodeUrl + '/auctions', auction);
   };
   Auction.findAll = function(){
     return $http.get(nodeUrl + '/auctions');

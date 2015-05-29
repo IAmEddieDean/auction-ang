@@ -3,7 +3,7 @@ br
 br
 .row 
   .col-xs-12.col-sm-6.col-md-4.col-lg-4
-    form(name='addItem' novalidate)
+    form(name='addItem' novalidate ng-if='!newAuction')
       .form-group
         label(for='title') Item Title
         input.form-control(type='text', name='title', ng-model='item.title')
@@ -13,31 +13,58 @@ br
       .form-group
         label(for='startPrice') Starting Price
         input.form-control(type='transaction-currency', name='startPrice', ng-model='item.startPrice')
+  
+  
   .col-xs-12.col-sm-6.col-md-4.col-lg-4
-    .form-group
-      label(for='client') Client Selection
-      select.form-control#states(ng-options='client as client for client in states', ng-model='item.client')
-        option: //a(href='#' ng-click='addNewClient()') Add New Client
-    .form-group
+    .row
+      .col-xs-3(ng-if='!newAuction')
+        button.btn.btn-success.btn-xs#newAuction(ng-click='addAuction(true)') Add New Auction
+      
+      .col-xs-3(ng-if='newAuction')
+        button.btn.btn-danger.btn-xs#newAuction(ng-click='addAuction(false)'): i.fa.fa-close
+        button.btn.btn-success.btn-xs#newAuction(ng-click='add(auction)'): i.fa.fa-save
+      
+      .col-xs-7.col-xs-offset-2
+        .form-group(ng-if='!newAuction')
+          label(for='auction') Auction Selection
+          select.form-control#states(ng-options='auction as auction for auction in auctions', ng-model='item.auction')
+            option
+        .form-group(ng-if='newAuction')
+          label(for='client') Client Selection
+          select.form-control#states(ng-options='client as client for client in clients', ng-model='auction.client')
+            option
+      
+      .col-xs-12(ng-if='newAuction')
+        .form-group
+          label(for='name') Auction Name
+          input.form-control(type='text', name='name', ng-model='auction.name', placeholder="Coding House April '15")
+
+
+
+
+
+
+
+    .form-group(ng-if='!newAuction')
       label(for='startTime') Starting Time
       #datetimepicker6.input-group.date
         input.form-control(type='datetime-local' name='startTime' ng-model='item.startTime')
         //- span.input-group-addon
         //-   span.glyphicon.glyphicon-calendar
-    .form-group
+    .form-group(ng-if='!newAuction')
       label(for='endTime') End Time
       #datetimepicker7.input-group.date
         input.form-control(type='datetime-local' name='endTime' ng-model='item.endTime')
         //- span.input-group-addon
         //-   span.glyphicon.glyphicon-calendar
-  .col-xs-12.col-sm-6.col-md-4.col-lg-4
+  .col-xs-12.col-sm-12.col-md-4.col-lg-4(ng-if='!newAuction')
     .form-group
       label(for='description') Item Description
       textarea.form-control(type='text' name='description' rows='8' ng-model='item.description')
-.row
+.row(ng-if='!newAuction')
   .col-xs-12.col-sm-4.col-md-3.col-lg-3
     .form-group
-      label(for='photo') Upload Photos
+      label(for='photo') Upload Photo
       input(type='file' name='photo' maxsize="500" base-sixty-four-input ng-model='item.photo')
       //- span(ng-show='photos.item.photos.$error.maxsize') Files must not exceed 500 KB
   .col-xs-12.col-sm-7.col-sm-offset-1.col-md-8.col-md-offset-1.col-lg-8.col-lg-offset-1
@@ -45,7 +72,7 @@ br
     //- .carousel.slide
     //-   .carousel-inner(role='listbox')
     //-     .item(ng-repeat='photo in item.photos')
-.row
+.row(ng-if='!newAuction')
   .col-xs-12
     .form-group
       button.btn.btn-block.btn-primary#itemBtn(ng-click='add(item)') Save Item
