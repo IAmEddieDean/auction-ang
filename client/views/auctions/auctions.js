@@ -139,7 +139,16 @@ angular.module('auction')
   $scope.confirm = false;
   
   $scope.bid = function(item){
-    console.log(item);
+    var obj = {};
+    // obj.currentPrice = item.currentPrice;
+    obj.bid = item.bid;
+    // obj._id = item._id;
+    Item.bid(obj, item._id)
+    .then(function(resp){
+      console.log(resp);
+    }).catch(function(err){
+      console.log(err);
+    });
   };
 
   $scope.bidConfirm = function(arg){

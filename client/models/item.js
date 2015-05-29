@@ -13,5 +13,8 @@ angular.module('auction')
   Item.find = function(id){
     return $http.get(nodeUrl + '/items/' + id);
   };
+  Item.bid = function(item){
+    return $http.put(nodeUrl + '/items/' + item._id, item);
+  };
   return Item;
 });
