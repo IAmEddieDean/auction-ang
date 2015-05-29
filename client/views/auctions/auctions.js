@@ -14,7 +14,7 @@
 // }
 
 angular.module('auction')
-.controller('AuctionCtrl', function(states, $scope, Auction, Client){
+.controller('AuctionCtrl', function(states, $scope, Auction, Client, Item, $state){
   
   $scope.states = states;
   $scope.newAuction = false;
@@ -50,11 +50,23 @@ angular.module('auction')
     return;
   };
   
+  $scope.save = function(item){
+    Item.save(item)
+    .then(function(resp){
+      $scope.item = {};
+      console.log(resp);
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+  
   $scope.add = function(auction){
     console.log(auction);
     Auction.add(auction)
     .then(function(resp){
       $scope.clients.push(resp.data);
+      $scope.auction = {};
+      $scope.newAuction = false;
     }).catch(function(err){
       console.log(err);
     });
@@ -76,7 +88,7 @@ angular.module('auction')
 
 
 
-.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item){
+.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item, $state){
   getItems();
   getClients();
 
@@ -84,7 +96,7 @@ angular.module('auction')
   $scope.clients = [];
   $scope.auctions = [];
   // $scope.confirm = false;
-  
+
   $scope.bidConfirm = function(item){
     item.confirm = true;
     return;
@@ -114,4 +126,19 @@ angular.module('auction')
     });
   }
 
+})
+
+.controller('ItemShowCtrl', function($scope, Item, $state){
+  $scope.item = {};
+  
+  getItem();
+  
+  function getItem(){
+    Item.find($state.params.itemId)
+    .then(function(resp){
+      $scope.item = resp.data;
+    }).catch(function(err){
+      console.log(err);
+    });
+  }
 });

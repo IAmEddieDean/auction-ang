@@ -22,9 +22,9 @@ br
 .row#itemCard(ng-repeat='item in items track by $index')
   .col-xs-12
     .col-xs-12.col-sm-6.col-md-4.col-lg-3
-      img(base-sixty-four-image='item.photo' ui-sref='auctions.show {itemId: item._id}')
+      img(base-sixty-four-image='item.photo' ui-sref='auctions.show({itemId: item._id})')
     .col-xs-12.col-sm-6.col-md-4
-      h5: a(ui-sref='auctions.show {itemId: item._id}') {{item.itemTitle}}
+      h5: a(ui-sref='auctions.show({itemId: item._id})') {{item.title}}
       h5 Lot: {{item.lot}}
       h5 Item Description: {{item.description | limitTo: 50}}...
     .col-xs-12.col-sm-6.col-md-4

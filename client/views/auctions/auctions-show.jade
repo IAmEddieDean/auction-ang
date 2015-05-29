@@ -1,0 +1,36 @@
+h3 Item Show Page
+.row
+  .col-xs-12.col-md-6#showPic
+    img#showPic(base-sixty-four-image='item.photo')
+  .col-xs-12.col-md-6
+    .col-xs-12.col-lg-6
+      h5 Item Title: {{item.title}}
+      h5 Current Price: {{item.currentPrice | currency}}
+      h5 End time: {{item.endTime | date: 'medium'}}
+      h5 Bid Count: {{item.bids.length}}
+      h5 High Bidder: {{item.highBid | limitTo: 2}}
+    .col-xs-12.col-lg-6
+      h5 Preview Day: {{item.preview}}
+      h5 Pickup Day: {{item.pickup}}
+      h5 Shipping Info: {{item.shipping}}
+    .col-xs-12
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item)') BID NOW!
+    //- .col-xs-12
+    .col-xs-3
+      button.btn.btn-xs.btn-warning: i.fa.fa-pencil
+    .col-xs-3.col-xs-offset-9
+      button.btn.btn-xs.btn-primary.pull-right Ask a Question
+  //- .col-xs-12
+.container#details
+  ul.nav.nav-tabs.navbar-right
+    li#tabby(role='presentation'): a(href='#desc') Description
+    li#tabby(role='presentation'): a('#map') Map
+    li#tabby(role='presentation'): a(href='#terms') Terms
+    //- li#tabby(role='presentation'): a(href='#') Shipping
+  .col-xs-12#desc.tabCard
+    h5#desc {{item.description}}
+  .col-xs-12#desc.tabCard
+    h5#map map here
+  .col-xs-12#desc.tabCard
+    h5#terms terms here
+//- .jumbotron
