@@ -145,7 +145,8 @@ angular.module('auction')
     // obj._id = item._id;
     Item.bid(obj, item._id)
     .then(function(resp){
-      console.log(resp);
+      $scope.item = resp.data.item;
+      $rootScope.activeUser = resp.data.user;
     }).catch(function(err){
       console.log(err);
     });
