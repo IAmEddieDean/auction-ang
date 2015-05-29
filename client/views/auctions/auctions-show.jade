@@ -1,0 +1,65 @@
+script(type='text/javascript').
+  $(document).ready(function(){
+  $("#myTab a").click(function(e){
+  e.preventDefault();
+  $(this).tab('show');
+  });
+  });
+h3 Item Show Page
+.row
+  .col-xs-12.col-md-6#showPic
+    img#showPic(base-sixty-four-image='item.photo')
+  .col-xs-12.col-md-6
+    .col-xs-12.col-lg-6
+      h5 Item Title: {{item.title}}
+      h5 Current Price: {{item.currentPrice | currency}}
+      h5 End time: {{item.endTime | date: 'medium'}}
+      h5 Bid Count: {{item.bids.length}}
+      h5 High Bidder: {{item.highBid | limitTo: 2}}
+    .col-xs-12.col-lg-6
+      h5 Preview Day: {{item.preview}}
+      h5 Pickup Day: {{item.pickup}}
+      h5 Shipping Info: {{item.shipping}}
+      
+      
+  .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='confirm')
+    .row
+      .col-xs-12
+        label(for='amount') Enter bid amount.
+    .row
+      .col-xs-12
+        input.form-control#amount(type='number', name='amount', ng-model='item.bid', placeholder='{{item.currentPrice * 1.1 | currency}}', min='{{item.currentPrice * 1.05}}')
+      .col-xs-2
+        button.btn.btn-xs.btn-danger.pull-right#cancel(ng-click='bidConfirm(false)'): i.fa.fa-times
+  .col-xs-4.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-4.col-lg-offset-3(ng-if='confirm')
+  .col-xs-6.col-xs-offset-6(ng-if='!confirm')
+    button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(true)') BID NOW!
+  .col-xs-6.col-xs-offset-6(ng-if='confirm')
+    button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') SUBMIT BID!
+      
+      
+      
+      
+      
+    .col-xs-12
+      //- button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item)') BID NOW!
+  .col-xs-12
+    .col-xs-3
+      button.btn.btn-xs.btn-warning: i.fa.fa-pencil
+    .col-xs-3.col-xs-offset-9
+      button.btn.btn-xs.btn-primary.pull-right Ask a Question
+  //- .col-xs-12
+.container#details
+  ul.nav.nav-tabs.navbar-right#myTab
+    li#tabby(role='presentation'): a(data-toggle='tab', href='#desc') Description
+    li#tabby(role='presentation'): a(data-toggle='tab', href='#map') Map
+    li#tabby(role='presentation'): a(data-toggle='tab', href='#terms') Terms
+    //- li#tabby(role='presentation'): a(href='#') Shipping
+  .col-xs-12.tab-content
+    .col-xs-12#desc.tabCard.tab-pane.fade.in.active
+      h5#desc {{item.description}}
+    .col-xs-12#map.tabCard.tab-pane.fade.in
+      h5#map map here
+    .col-xs-12#terms.tabCard.tab-pane.fade.in
+      h5#terms terms here
+//- .jumbotron

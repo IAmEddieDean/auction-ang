@@ -14,7 +14,7 @@
 // }
 
 angular.module('auction')
-.controller('AuctionCtrl', function(states, $scope, Auction, Client){
+.controller('AuctionCtrl', function(states, $scope, Auction, Client, Item, $state){
   
   $scope.states = states;
   $scope.newAuction = false;
@@ -50,11 +50,23 @@ angular.module('auction')
     return;
   };
   
+  $scope.save = function(item){
+    Item.save(item)
+    .then(function(resp){
+      $scope.item = {};
+      console.log(resp);
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+  
   $scope.add = function(auction){
     console.log(auction);
     Auction.add(auction)
     .then(function(resp){
       $scope.clients.push(resp.data);
+      $scope.auction = {};
+      $scope.newAuction = false;
     }).catch(function(err){
       console.log(err);
     });
@@ -76,7 +88,7 @@ angular.module('auction')
 
 
 
-.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item){
+.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item, $state){
   getItems();
   getClients();
 
@@ -84,7 +96,7 @@ angular.module('auction')
   $scope.clients = [];
   $scope.auctions = [];
   // $scope.confirm = false;
-  
+
   $scope.bidConfirm = function(item){
     item.confirm = true;
     return;
@@ -114,4 +126,42 @@ angular.module('auction')
     });
   }
 
+})
+
+.controller('ItemShowCtrl', function($scope, Item, $state){
+  
+//   $(document).ready(function(){
+//     $("#myTab li:eq(1) a").tab('show');
+// });
+  $scope.item = {};
+  
+  getItem();
+  $scope.confirm = false;
+  
+  $scope.bid = function(item){
+    var obj = {};
+    // obj.currentPrice = item.currentPrice;
+    obj.bid = item.bid;
+    // obj._id = item._id;
+    Item.bid(obj, item._id)
+    .then(function(resp){
+      console.log(resp);
+    }).catch(function(err){
+      console.log(err);
+    });
+  };
+
+  $scope.bidConfirm = function(arg){
+    $scope.confirm = arg;
+    return;
+  };
+  
+  function getItem(){
+    Item.find($state.params.itemId)
+    .then(function(resp){
+      $scope.item = resp.data;
+    }).catch(function(err){
+      console.log(err);
+    });
+  }
 });
