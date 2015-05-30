@@ -2,6 +2,38 @@
 /* @import '/vendor/bootstrap/build/less/variables.css';
  *//* public/vendor/bootstrap/less/variables.less
  */
+ #recent, #bids{
+   border: 1px solid black;
+   border-radius: .3em;
+   height: 350px;
+   overflow: hidden;
+  .thumbnail{
+  margin-top: .5em;
+  overflow: hidden;
+  }
+  img{
+    max-height: 125px;
+    max-width: 210px;
+  }
+}
+#bids, #userinfo, #recent, #invoices{
+  margin-top: 1em;
+}
+/*  #recent, #bids, #invoices{
+  margin: .2em .2em .2em -.2em;
+
+} */
+ #invoices, #userinfo{
+   border: 1px solid black;
+   border-radius: .3em;
+   overflow-y: auto;
+   overflow-x: hidden;
+   height: 350px;
+/*    margin-bottom: 1em;
+ */ }
+ .fa-sign-out{
+   color: red;
+ }
 
 /* for add single item view */
 .addy{

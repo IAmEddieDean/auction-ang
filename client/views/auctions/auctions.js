@@ -92,6 +92,7 @@ angular.module('auction')
   getItems();
   getClients();
 
+
   $scope.items = [];
   $scope.clients = [];
   $scope.auctions = [];
