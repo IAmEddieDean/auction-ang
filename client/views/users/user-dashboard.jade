@@ -3,33 +3,32 @@ h3 user dashboard
 .row
   .col-xs-12.col-md-8#recent
     h5.text-center Recently Viewed
-    .col-xs-12.col-sm-6.col-md-4
+    .col-xs-12.col-sm-6.col-md-4(ng-repeat='item in viewed')
       .thumbnail
-        img.img-responsive(src='http://placehold.it/500x300/EEE')
+        img.img-responsive(base-sixty-four-image='item.photo')
         .caption
-          h4 item title
-          h5 current price
-          h5 time remaining
-          a.btn.btn-info.btn-xs(href='#', role='button') Button
-          a.btn.btn-default.btn-xs(href='#', role='button') Button
-    .col-xs-12.col-sm-6.col-md-4
-      .thumbnail
-        img.img-responsive(src='http://placehold.it/500x300/EEE')
-        .caption
-          h4 item title
-          h5 current price
-          h5 time remaining
-          a.btn.btn-info.btn-xs(href='#', role='button') Button
-          a.btn.btn-default.btn-xs(href='#', role='button') Button
-    .col-xs-12.col-sm-6.col-md-4
-      .thumbnail
-        img.img-responsive(src='http://placehold.it/500x300/EEE')
-        .caption
-          h4 item title
-          h5 current price
-          h5 time remaining
-          a.btn.btn-info.btn-xs(href='#', role='button') Button
-          a.btn.btn-default.btn-xs(href='#', role='button') Button
+          h4 {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+  //-   .col-xs-12.col-sm-6.col-md-4
+  //-     .thumbnail
+  //-       img.img-responsive(src='http://placehold.it/500x300/EEE')
+  //-       .caption
+  //-         h4 item title
+  //-         h5 current price
+  //-         h5 time remaining
+  //-         a.btn.btn-info.btn-xs(href='#', role='button') Button
+  //-   .col-xs-12.col-sm-6.col-md-4
+  //-     .thumbnail
+  //-       img.img-responsive(src='http://placehold.it/500x300/EEE')
+  //-       .caption
+  //-         h4 item title
+  //-         h5 current price
+  //-         h5 time remaining
+  //-         a.btn.btn-info.btn-xs(href='#', role='button') Button
   .col-xs-12.col-md-3.col-md-offset-1#invoices
     h5.text-center Open invoices
     .row
@@ -42,33 +41,34 @@ h3 user dashboard
 .row
   .col-xs-12.col-md-8#bids
     h5.text-center Your Current Bids
-    .col-xs-12.col-sm-6.col-md-4
+    .col-xs-12.col-sm-6.col-md-4(ng-repeat='item in bidOn')
       .thumbnail
-        img(src='http://placehold.it/500x300/EEE')
+        img.img-responsive(base-sixty-four-image='item.photo')
         .caption
-          h4 item title
-          h5 current price
-          h5 time remaining
-          a.btn.btn-info.btn-xs(href='#', role='button') Button
-          a.btn.btn-default.btn-xs(href='#', role='button') Button
-    .col-xs-12.col-sm-6.col-md-4
-      .thumbnail
-        img(src='http://placehold.it/500x300/EEE')
-        .caption
-          h4 item title
-          h5 current price
-          h5 time remaining
-          a.btn.btn-info.btn-xs(href='#', role='button') Button
-          a.btn.btn-default.btn-xs(href='#', role='button') Button
-    .col-xs-12.col-sm-6.col-md-4
-      .thumbnail
-        img(src='http://placehold.it/500x300/EEE')
-        .caption
-          h4 item title
-          h5 current price
-          h5 time remaining
-          a.btn.btn-info.btn-xs(href='#', role='button') Button
-          a.btn.btn-default.btn-xs(href='#', role='button') Button
+          h4 {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    //- .col-xs-12.col-sm-6.col-md-4
+    //-   .thumbnail
+    //-     img(src='http://placehold.it/500x300/EEE')
+    //-     .caption
+    //-       h4 item title
+    //-       h5 current price
+    //-       h5 time remaining
+    //-       a.btn.btn-info.btn-xs(href='#', role='button') Button
+    //-       a.btn.btn-default.btn-xs(href='#', role='button') Button
+    //- .col-xs-12.col-sm-6.col-md-4
+    //-   .thumbnail
+    //-     img(src='http://placehold.it/500x300/EEE')
+    //-     .caption
+    //-       h4 item title
+    //-       h5 current price
+    //-       h5 time remaining
+    //-       a.btn.btn-info.btn-xs(href='#', role='button') Button
+    //-       a.btn.btn-default.btn-xs(href='#', role='button') Button
   .col-xs-12.col-md-3.col-md-offset-1#userinfo
     h5.text-center Your Information
     .row
