@@ -2,7 +2,9 @@
 /* @import '/vendor/bootstrap/build/less/variables.css';
  *//* public/vendor/bootstrap/less/variables.less
  */
-
+ [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+   display: none !important;
+ }
 /*for navbar */
  .fa-sign-out{
    color: red;
@@ -26,15 +28,19 @@
 }
 #splash{
   border: 1px solid black;
-  height: 604px;
-  border-radius: .3em;
+/*   height: 604px;
+ */  border-radius: .3em;
   .thumbnail{
   margin-top: .5em;
+  margin-bottom: .5em;
   overflow: hidden;
   }
   img{
     max-height: 125px;
     max-width: 210px;
+  }
+  #bidBut{
+    margin-top: .7em;
   }
 /*   #splashCard{
   border: 1px solid black;

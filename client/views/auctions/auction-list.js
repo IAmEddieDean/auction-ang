@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('auction')
-.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item, $state){
+.controller('AuctionListCtrl', function($scope, Auction, User, Client, Item, $state, $window, $rootScope){
   getItems();
   getClients();
 
@@ -11,12 +11,8 @@ angular.module('auction')
   $scope.auctions = [];
   $scope.confirm = false;
 
-  $scope.bidConfirm = function(arg){
-    $scope.confirm = arg;
-    return;
-  };
-  $scope.bidCancel = function(item){
-    item.confirm = false;
+  $scope.bidConfirm = function(item, arg){
+    item.confirm = arg;
     return;
   };
 
@@ -24,7 +20,6 @@ angular.module('auction')
     Item.findAll()
     .then(function(resp){
       $scope.items = resp.data.map(function(item){ item.confirm = false; return item; });
-      console.log(resp);
     }).catch(function(err){
       // console.log(err);
     });
@@ -39,5 +34,18 @@ angular.module('auction')
       // console.log(err);
     });
   }
+
+  $scope.bid = function(item){
+    var obj = {};
+    obj.bid = item.bid;
+    Item.bid(obj, item._id)
+    .then(function(resp){
+      item = resp.data.item;
+      $rootScope.activeUser = resp.data.user;
+    }).catch(function(err){
+      $window.swal({title: 'Bidding Error', text: "There was a problem with your bid. Either you aren't logged in, or your bid was too low. Please try again", type: 'error'});
+      console.log(err);
+    });
+  };
 
 });
