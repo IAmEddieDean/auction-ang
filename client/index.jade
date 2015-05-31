@@ -10,7 +10,8 @@ html(lang='en', ng-app='auction')
     link(rel='stylesheet', href='/vendor/sweetalert/dist/sweetalert.css')
     link(rel='stylesheet', href=isProd ? '/index.min.css' : '/index.css')
     link(rel='shortcut icon', href='/favicon.ico')
-  body
+    script(src='/vendor/angular/angular.min.js')
+  body(ng-cloak)
     include views/nav/nav
     .container
       .row
@@ -23,7 +24,6 @@ html(lang='en', ng-app='auction')
     script(src='/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
     script(src='/vendor/lodash/lodash.min.js')
     script(src='/vendor/sweetalert/dist/sweetalert.min.js')
-    script(src='/vendor/angular/angular.min.js')
     script(src='/vendor/angular-ui-router/release/angular-ui-router.min.js')
     script(src='/vendor/angular-base64-upload/dist/angular-base64-upload.js')
     script(src=isProd ? '/index.min.js' : '/index.js')

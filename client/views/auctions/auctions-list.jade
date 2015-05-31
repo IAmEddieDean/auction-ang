@@ -36,11 +36,11 @@ br
           label(for='amount') Enter bid amount.
       .row
         .col-xs-8
-          input.form-control#amount(type='number', name='amount', ng-model='bid', placeholder='{{item.currentPrice * 1.1 | currency}}', min='{{item.currentPrice * 1.05}}')
+          input.form-control#amount(type='number', name='amount', ng-model='item.bid', placeholder='{{item.currentPrice * 1.1 | currency}}', min='{{item.currentPrice * 1.05}}')
         .col-xs-4
-          button.btn.btn-xs.btn-danger.pull-right#cancel(ng-click='bidCancel(item)') Cancel
+          button.btn.btn-xs.btn-danger.pull-right#cancel(ng-click='bidConfirm(item, false)'): i.fa.fa-remove
     .col-xs-4.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-4.col-lg-offset-3(ng-if='item.confirm')
     .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='!item.confirm')
-      button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item)') BID NOW!
+      button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item, true)') BID NOW!
     .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='item.confirm')
       button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') SUBMIT BID!
