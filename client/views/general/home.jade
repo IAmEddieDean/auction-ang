@@ -1,1 +1,134 @@
-h3 HOME
+.row
+  .col-xs-12
+    .jumbotron#home
+      h1.text-left Welcome to AuctionSmith
+      h3.text-right Let us help you forge the perfect sale.
+      img.img-responsive#heph(src='../../assets/hephaestus-png.png')
+      form#randomDiv(name='userForm', novalidate, ng-if='!activeUser')
+        .col-xs-12
+          .form-group
+            label(for='email') Email
+            input.form-control#email(type='email', name='email', ng-model='user.email')
+          .form-group
+            label(for='password') Password
+            input.form-control#password(type='password', name='password', ng-model='user.password')
+          .form-group
+            button.btn.btn-success.btn-block(ng-click='submit(user)') Login
+            
+.row
+  h2.text-center Online Now!
+  .col-xs-12#splash
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard
+      .thumbnail
+        img.img-responsive(src='http://placehold.it/210x125')
+        //- img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 item title {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+
+
+
+
+
+
+
+//- 
+//- .jumbotron#home
+//-     h1.text-left Welcome to AuctionSmith
+//-       span: h3.text-right Let us help you forge the perfect sale.
+//-     //- .row
+//-     //-   .col-xs-12.col-md-6.col-lg-4
+//-   div#randomDiv
+//-     .col-xs-12.col-md-6.col-md-offset-5.col-lg-4.col-lg-offset-7
+//-       form(name='userForm', novalidate)
+//-         .form-group
+//-           label(for='email') Email
+//-           input.form-control#email(type='email', name='email', ng-model='user.email')
+//-         .form-group
+//-           label(for='password') Password
+//-           input.form-control#password(type='password', name='password', ng-model='user.password')
+//-         .form-group
+//-           button.btn.btn-success.btn-block(ng-click='submit(user)') Login
+//-     img.img-responsive#heph(src='../../assets/hephaestus-png.png')
+//-     //- .container

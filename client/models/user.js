@@ -16,5 +16,13 @@ angular.module('auction')
   User.find = function(info){
   };
 
+  User.getContent = function(){
+    return $http.get(nodeUrl + '/users/' + $rootScope.activeUser.lastName);
+  };
+  
+  User.logView = function(itemId){
+    return $http.put(nodeUrl + '/users', itemId);
+  };
+
   return User;
 });

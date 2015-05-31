@@ -13,12 +13,4 @@ angular.module('auction')
   };
   
   return Auction;
-})
-
-.factory('Item', function($http, nodeUrl){
-  function Item() {}
-  Item.findAll = function(){
-    return $http.get(nodeUrl + '/items');
-  }
-  return Item;
 });

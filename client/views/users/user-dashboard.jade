@@ -1,1 +1,82 @@
+
 h3 user dashboard
+.row
+  .col-xs-12.col-md-8#recent
+    h5.text-center Recently Viewed
+    .col-xs-12.col-sm-6.col-md-4(ng-repeat='item in viewed')
+      .thumbnail
+        img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+  //-   .col-xs-12.col-sm-6.col-md-4
+  //-     .thumbnail
+  //-       img.img-responsive(src='http://placehold.it/500x300/EEE')
+  //-       .caption
+  //-         h4 item title
+  //-         h5 current price
+  //-         h5 time remaining
+  //-         a.btn.btn-info.btn-xs(href='#', role='button') Button
+  //-   .col-xs-12.col-sm-6.col-md-4
+  //-     .thumbnail
+  //-       img.img-responsive(src='http://placehold.it/500x300/EEE')
+  //-       .caption
+  //-         h4 item title
+  //-         h5 current price
+  //-         h5 time remaining
+  //-         a.btn.btn-info.btn-xs(href='#', role='button') Button
+  .col-xs-12.col-md-3.col-md-offset-1#invoices
+    h5.text-center Open invoices
+    .row
+      .col-xs-12
+        h5.text-center: small 5/24 - Fanny Fire Sale - $125.20
+        button.btn.btn-xs.btn-warning.btn-block.text-center(ng-click='pay(invoice)') Pay Invoice
+    
+    
+    
+.row
+  .col-xs-12.col-md-8#bids
+    h5.text-center Your Current Bids
+    .col-xs-12.col-sm-6.col-md-4(ng-repeat='item in bidOn')
+      .thumbnail
+        img.img-responsive(base-sixty-four-image='item.photo')
+        .caption
+          h4 {{item.title | limitTo: 18}}
+            span(ng-if='item.title.length > 18') ...
+          h5 Current Bid: 
+            small {{item.currentPrice | currency}}
+          h5: small Time Remaining: {{item.endTime | date: medium}}
+          a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Bid Now!
+    //- .col-xs-12.col-sm-6.col-md-4
+    //-   .thumbnail
+    //-     img(src='http://placehold.it/500x300/EEE')
+    //-     .caption
+    //-       h4 item title
+    //-       h5 current price
+    //-       h5 time remaining
+    //-       a.btn.btn-info.btn-xs(href='#', role='button') Button
+    //-       a.btn.btn-default.btn-xs(href='#', role='button') Button
+    //- .col-xs-12.col-sm-6.col-md-4
+    //-   .thumbnail
+    //-     img(src='http://placehold.it/500x300/EEE')
+    //-     .caption
+    //-       h4 item title
+    //-       h5 current price
+    //-       h5 time remaining
+    //-       a.btn.btn-info.btn-xs(href='#', role='button') Button
+    //-       a.btn.btn-default.btn-xs(href='#', role='button') Button
+  .col-xs-12.col-md-3.col-md-offset-1#userinfo
+    h5.text-center Your Information
+    .row
+      .col-xs-12
+        h5 {{activeUser.firstName + ' ' + activeUser.lastName}}
+        br
+        p {{activeUser.email}}  
+        p {{activeUser.phone}}  
+        p {{activeUser.address.street}}  
+        p {{activeUser.address.city + ', ' + activeUser.address.state + ' ' + activeUser.address.zip}}  
+        button.btn.btn-xs.btn-warning.text-center(ng-click='pay(invoice)'): i.fa.fa-pencil &nbsp Edit
