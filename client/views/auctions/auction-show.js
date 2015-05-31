@@ -4,14 +4,14 @@ angular.module('auction')
 .controller('ItemShowCtrl', function($scope, Item, $state, $rootScope, User){
 
   $scope.item = {};
-  logView();
   getItem();
   $scope.confirm = false;
   
   function logView(){
-    User.logView($scope.item._id)
+    var id = {itemId: $scope.item._id};
+    User.logView(id)
     .then(function(resp){
-      console.log(resp);
+      $rootScope.activeUser = resp.data;
     }).catch(function(err){
       console.log(err);
     });
@@ -40,6 +40,7 @@ angular.module('auction')
     Item.find($state.params.itemId)
     .then(function(resp){
       $scope.item = resp.data;
+      logView();
     }).catch(function(err){
       console.log(err);
     });
