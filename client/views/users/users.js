@@ -2,6 +2,8 @@
 
 angular.module('auction')
 .controller('UsersCtrl', function($scope, $state, $window, User, states, $rootScope, $http){
+  $scope.isEdit = $rootScope.activeUser ? true : false;
+  $scope.user = $scope.isEdit ? $rootScope.activeUser : {};
   $scope.states = states;
   $scope.submit = function(user){
     User.login(user)

@@ -1,0 +1,45 @@
+h3.text-center New Client Registration
+br
+br
+.row
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4.col-lg-offset-2
+    form(name='clientForm', novalidate)
+      .form-group
+        label(for='firstName') First Name
+        input.form-control#email(type='text', name='firstName', ng-model='client.firstName')
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4
+      .form-group
+        label(for='lastName') Last Name
+        input.form-control#email(type='text', name='lastName', ng-model='client.lastName')
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4.col-lg-offset-2
+      .form-group
+        label(for='displayName') Display Name
+        input.form-control#password(type='text', name='displayName', ng-model='client.displayName')
+      .form-group
+        label(for='email') Email
+        input.form-control#email(type='email', name='email', ng-model='client.email')
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4
+      .form-group
+        label(for='phone') Phone Number
+        input.form-control(type='tel', name='phone', ng-model='client.phone')
+      .form-group
+        label(for='street') Street Address
+        input.form-control(type='text', name='street', ng-model='client.address.street')
+  .col-xs-12.col-sm-6.col-md-6.col-lg-4.col-lg-offset-2
+      .col-xs-12.col-sm-5
+        .form-group
+          label(for='city') City
+          input.form-control(type='text', name='city', ng-model='client.address.city')
+      .col-xs-12.col-sm-3
+        .form-group
+          label(for='state') State
+          select.form-control#states(ng-options='state as state for state in states', ng-model='client.address.state')
+            option
+      .col-xs-12.col-sm-4
+        .form-group
+          label(for='zip') Zip Code
+          input.form-control(type='number', name='zip', ng-model='client.address.zip')
+  .col-xs-12.col-lg-8.col-lg-offset-2
+    .form-group
+        button.btn.btn-success.btn-block(ng-click='register(client)') Register
+      
