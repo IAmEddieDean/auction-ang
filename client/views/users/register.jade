@@ -43,5 +43,6 @@ br
           input.form-control(type='number', name='zip', ng-model='user.address.zip')
   .col-xs-12.col-lg-8.col-lg-offset-2
     .form-group
-        button.btn.btn-success.btn-block(ng-click='register(user)') Register
+        button.btn.btn-success.btn-block(ng-click='register(user)', ng-if='!isEdit') Register
+        button.btn.btn-success.btn-block(ng-click='register(user)', ng-if='isEdit') Save Changes
       

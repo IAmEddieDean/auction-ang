@@ -6,6 +6,9 @@ angular.module('auction')
   $scope.items = [];
   
   getItems();
+  $scope.$on('hello', function(){
+    console.log('sockets connected');
+  });
 
   function getItems(){
     Item.findSome()

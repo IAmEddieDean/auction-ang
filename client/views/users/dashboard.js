@@ -30,7 +30,11 @@ angular.module('auction')
     obj.bid = item.bid;
     Item.bid(obj, item._id)
     .then(function(resp){
-      item = resp.data.item;
+      // $scope.$digest();
+      // $scope.$apply(function(){
+      //   item = resp.data.item;
+      // });
+      $scope.bidConfirm(item, false)
       $rootScope.activeUser = resp.data.user;
     }).catch(function(err){
       $window.swal({title: 'Bidding Error', text: "There was a problem with your bid. Either you aren't logged in, or your bid was too low. Please try again", type: 'error'});
