@@ -1,0 +1,21 @@
+.row
+  .col-xs-12
+    table.table.table-hover.table-responsive
+      thead
+        tr
+          th Name
+          th Email
+          th Phone
+          th Join Date
+          th Invoices
+          th Bids
+          th Edit
+      tbody
+        tr(ng-repeat='user in users')
+          td {{user.firstName + " " + user.lastName}}
+          td: a(mailTo='{{user.email}}') {{user.email}}
+          td {{user.phone}}
+          td {{user.createdAt | date: medium}}
+          td: button.btn.btn-xs.btn-primary View
+          td: button.btn.btn-xs.btn-primary View
+          td: button.btn.btn-xs.btn-warning#listEdit(ui-sref='register'): i.fa.fa-pencil

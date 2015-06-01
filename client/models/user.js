@@ -13,7 +13,8 @@ angular.module('auction')
     return $http.post(nodeUrl + '/users/authenticate', info);
   };
 
-  User.find = function(info){
+  User.findAll = function(){
+    return $http.get(nodeUrl + '/users');
   };
 
   User.getContent = function(){
