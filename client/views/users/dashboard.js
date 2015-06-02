@@ -5,7 +5,6 @@ angular.module('auction')
   $scope.invoices = [];
   $scope.viewed = [];
   $scope.bidOn = [];
-
   getContent();
 
 
