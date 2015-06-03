@@ -10,6 +10,20 @@ angular.module('auction')
   $scope.clients = [];
   $scope.auctions = [];
   $scope.confirm = false;
+  setInterval(checkTime, 1000);
+  
+  function checkTime(){
+    $scope.items.forEach(function(item){
+      var time = moment(item.endTime).unix();
+      item.active = time > moment().unix() ? true : false;
+    });
+    $scope.$apply();
+  }
+  // $scope.isDays = function(time){
+  //   console.log(moment(time).fromNow() > );
+  //   // return moment(time).unix()
+  //
+  // }
 
   $scope.bidConfirm = function(item, arg){
     item.confirm = arg;

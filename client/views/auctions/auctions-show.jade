@@ -13,9 +13,13 @@ h3 Item Show Page
     .col-xs-12.col-lg-6
       h5 Item Title: {{item.title}}
       h5 Current Price: {{item.currentPrice | currency}}
-      h5 End time: {{item.endTime | date: 'medium'}}
+      h5: timer(end-time='item.endTime') Ending In: 
+        span  {{days}} day(s),
+        span  {{hours}} hr(s),
+        span  {{minutes}} min(s),
+        span  {{seconds}} sec(s)      
       h5 Bid Count: {{item.bids.length}}
-      h5 High Bidder: {{item.highBid | limitTo: 2}}
+      h5 High Bidder: {{item.bids[0].userId | limitTo: 5}}
     .col-xs-12.col-lg-6
       h5 Preview Day: {{item.preview}}
       h5 Pickup Day: {{item.pickup}}
@@ -44,9 +48,10 @@ h3 Item Show Page
     .col-xs-12
       //- button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item)') BID NOW!
   .col-xs-12
-    .col-xs-3
+    .col-xs-3(ng-if='isAdmin')
       button.btn.btn-xs.btn-warning: i.fa.fa-pencil
     .col-xs-3.col-xs-offset-9
+      br
       button.btn.btn-xs.btn-primary.pull-right Ask a Question
   //- .col-xs-12
 .container#details
