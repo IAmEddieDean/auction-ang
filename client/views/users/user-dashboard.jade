@@ -1,12 +1,12 @@
 
-h3 {{activeUser.firstName + "'s"}} Dashboard
+h3.center{{activeUser.firstName + "'s"}} Dashboard
 .row
   .col-xs-12.col-md-8#bids
     h5.text-center Your Current Bids
     .col-xs-12.col-sm-6.col-md-4(ng-repeat='item in bidOn')
       .thumbnail
-        img.img-responsive(src='http://placehold.it/210x125', ng-if='!item.photo')
-        img.img-responsive(base-sixty-four-image='item.photo')
+        img.img-responsive.listPic(src='http://placehold.it/210x125', ng-if='!item.photo')
+        img.img-responsive.listPic(base-sixty-four-image='item.photo')
         .caption(ng-if='!item.confirm')
           h4 {{item.title | limitTo: 18}}
             span(ng-if='item.title.length > 18') ...
@@ -51,8 +51,8 @@ h3 {{activeUser.firstName + "'s"}} Dashboard
     h5.text-center Recently Viewed
     .col-xs-12.col-sm-6.col-md-4(ng-repeat='item in viewed')
       .thumbnail
-        img.img-responsive(src='http://placehold.it/210x125', ng-if='!item.photo')
-        img.img-responsive(base-sixty-four-image='item.photo')
+        img.img-responsive.listPic(src='http://placehold.it/210x125', ng-if='!item.photo')
+        img.img-responsive.listPic(base-sixty-four-image='item.photo')
         .caption(ng-if='!item.confirm')
           h4 {{item.title | limitTo: 18}}
             span(ng-if='item.title.length > 18') ...
