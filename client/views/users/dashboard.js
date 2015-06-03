@@ -5,7 +5,6 @@ angular.module('auction')
   $scope.invoices = [];
   $scope.viewed = [];
   $scope.bidOn = [];
-
   getContent();
 
 
@@ -34,7 +33,7 @@ angular.module('auction')
       // $scope.$apply(function(){
       //   item = resp.data.item;
       // });
-      $scope.bidConfirm(item, false)
+      $scope.bidConfirm(item, false);
       $rootScope.activeUser = resp.data.user;
     }).catch(function(err){
       $window.swal({title: 'Bidding Error', text: "There was a problem with your bid. Either you aren't logged in, or your bid was too low. Please try again", type: 'error'});

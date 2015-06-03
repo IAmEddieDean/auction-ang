@@ -12,7 +12,11 @@ h3 {{activeUser.firstName + "'s"}} Dashboard
             span(ng-if='item.title.length > 18') ...
           h5 Current Bid:
             small {{item.currentPrice | currency}}
-          h5: small Time Remaining: {{item.endTime | date: medium}}
+          h5: timer(end-time='item.endTime') Ending In: 
+              span: small  {{days}} day(s),
+              span: small  {{hours}} hr(s),
+              span: small  {{minutes}} min(s),
+              span: small  {{seconds}} sec(s)   
           a.btn.btn-success.btn-xs.btn-block(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
         .caption(ng-if='item.confirm')
           .col-xs-12
@@ -54,7 +58,11 @@ h3 {{activeUser.firstName + "'s"}} Dashboard
             span(ng-if='item.title.length > 18') ...
           h5 Current Bid:
             small {{item.currentPrice | currency}}
-          h5: small Time Remaining: {{item.endTime | date: medium}}
+            h5: timer(end-time='item.endTime') Ending In: 
+                span: small  {{days}} day(s),
+                span: small  {{hours}} hr(s),
+                span: small  {{minutes}} min(s),
+                span: small  {{seconds}} sec(s)   
           a.btn.btn-success.btn-xs.btn-block(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
 
         .caption(ng-if='item.confirm')

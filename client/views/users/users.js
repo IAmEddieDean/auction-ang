@@ -10,7 +10,11 @@ angular.module('auction')
     .then(function(response){
       $rootScope.activeUser = response.data.user;
       $http.defaults.headers.common.Authorization = 'Bearer ' + response.data.token;
-      $state.go('dashboard.user', {lastName: response.data.user.lastName});
+      if(response.data.user.role > 1){
+        $state.go('dashboard.admin');
+      }else{
+        $state.go('dashboard.user', {lastName: response.data.user.lastName});
+      }
     })
     .catch(function(res){
       if(res.status === 418){

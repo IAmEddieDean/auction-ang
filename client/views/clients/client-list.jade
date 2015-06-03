@@ -1,0 +1,21 @@
+.row
+  .col-xs-12
+    table.table.table-hover.table-responsive
+      thead
+        tr
+          th Name
+          th Display Name
+          th Email
+          th Phone
+          th Join Date
+          th Auctions
+          th Edit
+      tbody
+        tr(ng-repeat='client in clients')
+          td {{client.firstName + " " + client.lastName}}
+          td {{client.displayName}}
+          td: a(mailTo='{{client.email}}') {{client.email}}
+          td {{client.phone}}
+          td {{client.createdAt | date: medium}}
+          td: button.btn.btn-xs.btn-primary View
+          td: button.btn.btn-xs.btn-warning#listEdit(ui-sref='client.new'): i.fa.fa-pencil
