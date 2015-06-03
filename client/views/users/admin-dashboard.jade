@@ -6,14 +6,14 @@ h3 Admin Dashboard
     .col-xs-12.col-sm-6.col-md-4
       .thumbnail
         .caption
-          h5 Client List
-          h5 Add Client
+          h5: a(ui-sref='client.list') Client List
+          h5: a(ui-sref='client.new') Add Client
           h5 Prospects List
     .col-xs-12.col-sm-6.col-md-4
       .thumbnail
         .caption
-          h5 Current Auction List
-          h5 Post New Item
+          h5: a(ui-sref='auctions.list') Current Auction List
+          h5: a(ui-sref='auctions.new') Post New Item
           h5 Past Auction List
     .col-xs-12.col-sm-6.col-md-4
       .thumbnail
@@ -25,7 +25,7 @@ h3 Admin Dashboard
       .thumbnail
         .caption
           h5 Bidder's List
-          h5 Add a user
+          h5: a(ui-sref='register') Add a user
           //- h5 TBD
     .col-xs-12.col-sm-6
       .thumbnail
@@ -34,13 +34,13 @@ h3 Admin Dashboard
           h5 Banned Users
           //- h5 TBD
 
-  .col-xs-12.col-md-3.col-md-offset-1#invoices
+  .col-xs-12.col-md-3.col-md-offset-1#admininvoices
     h5.text-center Open invoices
     .row
       .col-xs-12
         h5.text-center: small Clyde Marl - 5/24 - Fanny Fire Sale - $125.20
         button.btn.btn-xs.btn-warning.btn-block.text-center(ng-click='sendReminder(user)') Send Reminder
-  .col-xs-12.col-md-3.col-md-offset-9#userinfo
+  .col-xs-12.col-md-3.col-md-offset-9#admininfo
     h5.text-center Your Information
     .row
       .col-xs-12

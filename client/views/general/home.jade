@@ -17,42 +17,97 @@
             
 .row
   h2.text-center Online Now!
-  .col-xs-12#splash
-    .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard(ng-repeat='item in items')
-      .thumbnail
-        div#cf
-        img.img-responsive.bottom(base-sixty-four-image='item.photo')
-        //- img.img-responsive.top(src='../../assets/me.jpg')
-        img.img-responsive(src='http://placehold.it/210x125', ng-if='!item.photo')
-        .caption(ng-if='!item.confirm')
-          h4 {{item.title | limitTo: 18}}
-            span(ng-if='item.title.length > 18') ...
-          h5 Current Bid:
-            small {{item.currentPrice | currency}}
-            h5: timer(end-time='item.endTime') Ending In: 
-                span: small  {{days}} day(s),
-                span: small  {{hours}} hr(s),
-                span: small  {{minutes}} min(s),
-                span: small  {{seconds}} sec(s)   
-          a.btn.btn-success.btn-xs.btn-block(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
-
-        .caption(ng-if='item.confirm')
-          .col-xs-12
-            .row
-              .col-xs-12
-                label(for='amount') Enter bid amount.
-                small Current Bid:
-                  small {{item.currentPrice | currency}}
-            .row
-              .col-xs-12
-                input.form-control#amount(type='number', name='amount', ng-model='item.bid', placeholder='{{item.currentPrice * 1.1 | currency}}', min='{{item.currentPrice * 1.05}}')
-          a.btn.btn-success.btn-xs.btn-block(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
-          .row(ng-if='item.confirm')
-            .col-xs-12#bidBut
-              .col-xs-3
-                a.btn.btn-danger.btn-xs.btn-block(ng-click='bidConfirm(item, false)'): i.fa.fa-remove
-              .col-xs-9
-                a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Submit Bid
+  .col-xs-12(ng-controller='CardCtrl')
+    .col-xs-12.col-sm-6.col-md-4.col-lg-3#card(ng-repeat='item in items' ng-if='item.active')
+      .col-xs-12#cardhead
+        h4.text-center {{item.title}}
+        span {{item.description | limitTo: 40}}
+        span(ng-if='item.description.length > 37') ...
+      .col-xs-12#cardimg
+        img.img-responsive(base-sixty-four-image='item.photo')
+      .row
+        .col-xs-12
+          .col-xs-6#curbid
+            small Current Price:
+            br
+            span.text-center: strong {{item.currentPrice | currency}}
+          .col-xs-6: button.btn.btn-success.btn-block#bidbtn(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
+          .col-xs-6: button.btn.btn-success.btn-block#bidbtn(ng-click='bid(item)' ng-if='item.confirm') Submit!
+        .col-xs-12#timer(ng-if='!item.confirm'): timer(end-time='item.endTime')
+          .col-xs-3
+            span: strong {{days}}
+            br
+            small Days
+          .col-xs-3
+            span: strong {{hours}}
+            br
+            small Hours
+          .col-xs-3
+            span: strong {{minutes}}
+            br
+            small Mins
+          .col-xs-3
+            span: strong {{seconds}}
+            br
+            small Sec
+        .row(ng-if='item.confirm')
+          .col-xs-1.col-xs-offset-1
+            button.btn.btn-danger.btn-xs#cancelbid(ng-click='bidConfirm(item, false)'): i.fa.fa-remove
+          .col-xs-7.col-xs-offset-2
+            input.form-control#bidinput(input='number' ng-model='item.bid' placeholder='Min Bid {{item.currentPrice * 1.05}}')
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //- .col-xs-12#splash
+  //-   .col-xs-12.col-sm-6.col-md-4.col-lg-3#splashCard(ng-repeat='item in items')
+  //-     .thumbnail
+  //-       div#cf
+  //-       img.img-responsive.bottom(base-sixty-four-image='item.photo')
+  //-       //- img.img-responsive.top(src='../../assets/me.jpg')
+  //-       img.img-responsive(src='http://placehold.it/210x125', ng-if='!item.photo')
+  //-       .caption(ng-if='!item.confirm')
+  //-         h4 {{item.title | limitTo: 18}}
+  //-           span(ng-if='item.title.length > 18') ...
+  //-         h5 Current Bid:
+  //-           small {{item.currentPrice | currency}}
+  //-           h5: timer(end-time='item.endTime') Ending In: 
+  //-               span: small  {{days}} day(s),
+  //-               span: small  {{hours}} hr(s),
+  //-               span: small  {{minutes}} min(s),
+  //-               span: small  {{seconds}} sec(s)   
+  //-         a.btn.btn-success.btn-xs.btn-block(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
+  //- 
+  //-       .caption(ng-if='item.confirm')
+  //-         .col-xs-12
+  //-           .row
+  //-             .col-xs-12
+  //-               label(for='amount') Enter bid amount.
+  //-               small Current Bid:
+  //-                 small {{item.currentPrice | currency}}
+  //-           .row
+  //-             .col-xs-12
+  //-               input.form-control#amount(type='number', name='amount', ng-model='item.bid', placeholder='{{item.currentPrice * 1.1 | currency}}', min='{{item.currentPrice * 1.05}}')
+  //-         a.btn.btn-success.btn-xs.btn-block(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
+  //-         .row(ng-if='item.confirm')
+  //-           .col-xs-12#bidBut
+  //-             .col-xs-3
+  //-               a.btn.btn-danger.btn-xs.btn-block(ng-click='bidConfirm(item, false)'): i.fa.fa-remove
+  //-             .col-xs-9
+  //-               a.btn.btn-success.btn-xs.btn-block(ng-click='bid(item)') Submit Bid
 
 
 

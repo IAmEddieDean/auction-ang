@@ -1,0 +1,38 @@
+.col-xs-12(ng-controller='CardCtrl')
+  .col-xs-12.col-sm-6.col-md-4.col-lg-3#card(ng-repeat='item in items')
+    .col-xs-12#cardhead
+      h4.text-center {{item.title}}
+      span {{item.description | limitTo: 40}}
+      span(ng-if='item.description.length > 37') ...
+    .col-xs-12#cardimg
+      img.img-responsive(base-sixty-four-image='item.photo')
+    .row
+      .col-xs-12
+        .col-xs-6#curbid
+          small Current Price:
+          br
+          span.text-center: strong {{item.currentPrice | currency}}
+        .col-xs-6: button.btn.btn-success.btn-block#bidbtn(ng-click='bidConfirm(item, true)' ng-if='!item.confirm') Bid Now!
+        .col-xs-6: button.btn.btn-success.btn-block#bidbtn(ng-click='bid(item)' ng-if='item.confirm') Submit!
+      .col-xs-12#timer(ng-if='!item.confirm'): timer(end-time='item.endTime')
+        .col-xs-3
+          span: strong {{days}}
+          br
+          small Days
+        .col-xs-3
+          span: strong {{hours}}
+          br
+          small Hours
+        .col-xs-3
+          span: strong {{minutes}}
+          br
+          small Mins
+        .col-xs-3
+          span: strong {{seconds}}
+          br
+          small Sec
+      .row(ng-if='item.confirm')
+        .col-xs-1.col-xs-offset-1
+          button.btn.btn-danger.btn-xs#cancelbid(ng-click='bidConfirm(item, false)'): i.fa.fa-remove
+        .col-xs-7.col-xs-offset-2
+          input.form-control#bidinput(input='number' ng-model='item.bid' placeholder='Min Bid {{item.currentPrice * 1.05}}')
