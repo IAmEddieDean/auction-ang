@@ -22,7 +22,7 @@ br
 .row#itemCard(ng-repeat='item in items track by $index | filter: item.title' ng-if='item.active')
   .col-xs-12
     .col-xs-12.col-sm-6.col-md-4.col-lg-3
-      img(base-sixty-four-image='item.photo' ui-sref='auctions.show({itemId: item._id})')
+      img.listPic.center-block(base-sixty-four-image='item.photo' ui-sref='auctions.show({itemId: item._id})')
     .col-xs-12.col-sm-6.col-md-4
       h5: a(ui-sref='auctions.show({itemId: item._id})') {{item.title}}
       h5 Lot: {{item.lot}}
@@ -30,7 +30,7 @@ br
     .col-xs-12.col-sm-6.col-md-4
       h5 Current Price: {{item.currentPrice | currency}}
       h5: timer(end-time='item.endTime') Ending In: 
-        span(ng-if='isDays(item.endTime)')  {{days}} day(s),
+        span  {{days}} day(s),
         span  {{hours}} hr(s),
         span  {{minutes}} min(s),
         span  {{seconds}} sec(s)
@@ -49,3 +49,4 @@ br
     .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='item.confirm')
       button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') SUBMIT BID!
       //- {{days ? days + ' days' : ''}} {{hours}}, hours, {{minutes}} minutes, {{seconds}} seconds
+      //- (ng-if='isDays(item.endTime)')

@@ -1,11 +1,88 @@
-@import '/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css';
-/* @import '/vendor/bootstrap/build/less/variables.css';
+/* @import '/views/cards/cards.css';
+ *//* @import '/vendor/bootstrap/build/less/variables.css';
  *//* public/vendor/bootstrap/less/variables.less
  */
  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
    display: none !important;
  }
-/*for navbar */
+ html{
+   font-family: 'Raleway';
+   .form-control{
+     border-radius: 0;
+   }
+   .btn{
+     border-radius: 0;
+   }
+ }
+ 
+ 
+/*  for new cards */
+#card{
+  box-shadow: 3px 4px 10px black;
+  margin: .2em;
+  max-width: 270px;
+  font-family: 'Raleway';
+  height: 402px;
+  background-color: white;
+  #curbid{
+    text-align: center;
+  }
+  #cardhead{
+    height: 89px;
+    color: RGBA(102, 102, 102, 1) !important;
+    border-bottom: .1em solid RGBA(238, 238, 238, 1);
+  }
+  #cardimg{
+    margin-top: .4em;
+    height: 210px;
+    max-width: 100%;
+    img{
+      margin: 0 auto;
+      max-height: 210px;
+    }
+  }
+  #bidbtn{
+    border-radius: 0;
+    height: 40px;
+    margin-top: .4em;
+  }
+  #timer{
+    background-color: RGBA(249, 249, 249, 1);
+    margin-top: .4em;
+    text-align: center;
+  }
+  #cancelbid{
+    display: block;
+    margin-top: 1em;
+  }
+  #bidinput{
+    height: 30px;
+    margin-top: .7em;
+  }
+}
+ 
+ #admininfo, #admininvoices{
+   border: .1em solid black;
+   background-color: white;
+
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/*  for navbar */
  .fa-sign-out{
    color: red;
  }
@@ -29,12 +106,25 @@
 }
 
 /*for homepage*/
+#home{
+  background-image: url('https://c4.staticflickr.com/8/7143/6784310351_f79822abf8_b.jpg');
+  color: RGBA(249, 249, 249, 1);
+}
 .jumbotron{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  border-radius: 0 !important;
   overflow: none;
   form#randomDiv {
-    float: right;
-    margin-top: 5%;
+    float: left;
+    margin-top: 7%;
     min-width: 300px;
+  }
+  @media (max-width: 1199px){
+    form#randomDiv{
+      display: none;
+    }
   }
 }
 #heph{
@@ -42,11 +132,15 @@
   width: 25% !important;
   padding: -2em;
   margin: -2em;
+  visibility: hidden;
 }
 #splash{
-  border: 1px solid black;
-  border-radius: .3em;
-  .thumbnail{
+
+/*   background-color: white;
+border: 1px solid black;
+border-radius: .3em;
+ */  .thumbnail{
+  background-color: white !important;
   margin-top: .5em;
   margin-bottom: .5em;
   overflow: hidden;
@@ -86,14 +180,42 @@
 #bids, #userinfo, #recent, #invoices{
   margin-top: 1em;
 }
- #invoices, #userinfo{
-   border: 1px solid black;
-   border-radius: .3em;
-   overflow-y: auto;
-   overflow-x: hidden;
-   height: 350px;
- }
+#userinfo{
+  box-shadow: 3px 4px 10px black;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 402px;
+  background-color: white;
+  float: right;
+  margin-top: -25.3em;
+  margin-right: -4em;
+}
+#invoices{
+  box-shadow: 3px 4px 10px black;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 402px;
+  width: 285px;
+  background-color: white;
+  float: right;
+  margin-top: -25.3em;
+  margin-right: -3.1em;
+}
+@media (max-width: 1199px){
+  #userinfo, #invoices{
+    display: none;
+  }
+}
 
+/*  #invoices, #userinfo{
+  border: 1px solid black;
+  border-radius: .3em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 350px;
+  background-color: white;
+}
+*/
 
 /* for add single item view */
 .addy{
@@ -130,10 +252,14 @@
     margin-top: .4em;
   }
 }
-#itemCard:nth-child(even){
+/* #itemCard:nth-child(even){
   background-color: RGBA(224, 224, 224, .3);
+} */
+#itemCard{
+  background-color: white;
+  border: 1px solid black;
+  margin: 1em;
 }
-
 
 
 /* for single item view */
@@ -155,7 +281,50 @@
   border-radius: .2em;
 }
 .jumbotron{
-  background-color: RGBA(224, 224, 224, .3);
+  background-color: rgba(255, 255, 255, 1);
   padding-top: 10px;
   margin-top: 10px;
 }
+body{
+  background-color: RGBA(238, 238, 238, 1);
+}
+#splashCard .thumbnail{
+  background-color: rgba(219, 219, 219, 0.25);
+  border: 2px solid black;
+}
+.listPic{
+  box-shadow: 0px 0px 10px black;
+  transition: all .2s ease-in-out;
+}
+.listPic:hover{
+  transform: scale(1.1);
+}
+.center{
+  text-align: center;
+}
+/* #cf {
+position:relative;  max-width:210px;
+margin:0 auto;}
+
+#cf img {
+position:absolute;
+left:0;
+margin-left:  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+#cf img.bottom{
+  opacity: 0;
+}
+#cf:hover{
+  
+  .bottom{
+  opacity: 100;
+  }
+}
+
+#cf img.top:hover {
+  opacity:0;
+}
+ */

@@ -6,6 +6,7 @@ angular.module('auction')
 
   $stateProvider
   .state('home', {url: '/', templateUrl: '/views/general/home.html', controller: 'HomeCtrl'})
+  .state('cards', {url: '/cards', templateUrl: '/views/cards/cards.html', controller: 'CardCtrl'})
   .state('about', {url: '/about', templateUrl: '/views/general/about.html'})
   .state('faq', {url: '/faq', templateUrl: '/views/general/faq.html'})
   .state('contact', {url: '/contact', templateUrl: '/views/general/contact.html'})
