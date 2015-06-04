@@ -24,7 +24,7 @@
         span {{item.description | limitTo: 40}}
         span(ng-if='item.description.length > 37') ...
       .col-xs-12#cardimg
-        img.img-responsive(base-sixty-four-image='item.photo')
+        img.img-responsive(base-sixty-four-image='item.photo' ui-sref='auctions.show({itemId: item._id})')
       .row
         .col-xs-12
           .col-xs-6#curbid

@@ -10,15 +10,15 @@ nav.navbar.navbar-default(ng-controller='NavCtrl')
       a.navbar-brand(ui-sref='home') AuctionSmith
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right(ng-if='activeUser')
-        li(ng-if='activeUser.role < 2'): a(ui-sref='dashboard.user'): i.fa.fa.fa-compass &nbsp; Dashboard
-        li(ng-if='activeUser.role > 1'): a(ui-sref='dashboard.admin'): i.fa.fa.fa-compass &nbsp; Dashboard
-        li: a(ui-sref='about'): i.fa.fa.fa-compass &nbsp; About
+        li(ng-if='activeUser.role < 2'): a(ui-sref='dashboard.user'): i.fa.fa.fa-tachometer &nbsp; Dashboard
+        li(ng-if='activeUser.role > 1'): a(ui-sref='dashboard.admin'): i.fa.fa.fa-tachometer &nbsp; Dashboard
+        li: a(ui-sref='about'): i.fa.fa.fa-star &nbsp; About
         li(ng-if='activeUser.role > 1'): a(ui-sref='client.new'): i.fa.fa.fa-compass &nbsp; new client
         li(ng-if='activeUser.role > 1'): a(ui-sref='auctions.add'): i.fa.fa.fa-glass &nbsp; Add item
-        li: a(ui-sref='auctions.list'): i.fa.fa.fa-info &nbsp; Auctions
+        li: a(ui-sref='auctions.list'): i.fa.fa.fa-gavel &nbsp; Auctions
         li: a(ng-click='logout()'): i.fa.fa-sign-out &nbsp; {{activeUser.firstName + ' ' + activeUser.lastName}}
       ul.nav.navbar-nav.navbar-right(ng-if='!activeUser')
-        li: a(ui-sref='about'): i.fa.fa.fa-compass &nbsp; About
-        li: a(ui-sref='auctions.list'): i.fa.fa.fa-info &nbsp; Auctions
+        li: a(ui-sref='about'): i.fa.fa.fa-star &nbsp; About
+        li: a(ui-sref='auctions.list'): i.fa.fa.fa-gavel &nbsp; Auctions
         li: a(ui-sref='register'): i.fa.fa-user-plus &nbsp; Register
         li: a(ui-sref='login'): i.fa.fa-key &nbsp; Login
