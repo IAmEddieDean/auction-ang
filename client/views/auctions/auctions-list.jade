@@ -24,16 +24,34 @@ br
     .col-xs-12.col-sm-6.col-md-4.col-lg-3
       img.listPic.center-block(base-sixty-four-image='item.photo' ui-sref='auctions.show({itemId: item._id})')
     .col-xs-12.col-sm-6.col-md-4
-      h5: a(ui-sref='auctions.show({itemId: item._id})') {{item.title}}
+      h5: a(ui-sref='auctions.show({itemId: item._id})') {{item.title | limitTo: 30}}
       h5 Lot: {{item.lot}}
-      h5 Item Description: {{item.description | limitTo: 50}}...
+      h5 Item Description: {{item.description | limitTo: 30}}...
     .col-xs-12.col-sm-6.col-md-4
       h5 Current Price: {{item.currentPrice | currency}}
-      h5: timer(end-time='item.endTime') Ending In: 
-        span  {{days}} day(s),
-        span  {{hours}} hr(s),
-        span  {{minutes}} min(s),
-        span  {{seconds}} sec(s)
+      h5(ng-if='!item.confirm') Ends In:
+      .col-xs-12#timer(ng-if='!item.confirm'): timer(end-time='item.endTime')
+        .col-xs-3
+          span: strong {{days}}
+          br
+          small Days
+        .col-xs-3
+          span: strong {{hours}}
+          br
+          small Hours
+        .col-xs-3
+          span: strong {{minutes}}
+          br
+          small Mins
+        .col-xs-3
+          span: strong {{seconds}}
+          br
+          small Sec
+      //- h5: timer(end-time='item.endTime') Ending In: 
+      //-   span  {{days}} day(s),
+      //-   span  {{hours}} hr(s),
+      //-   span  {{minutes}} min(s),
+      //-   span  {{seconds}} sec(s)
     .col-xs-8.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='item.confirm')
       .row
         .col-xs-12
@@ -44,9 +62,9 @@ br
         .col-xs-4
           button.btn.btn-xs.btn-danger.pull-right#cancel(ng-click='bidConfirm(item, false)'): i.fa.fa-remove
     .col-xs-4.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-4.col-lg-offset-3(ng-if='item.confirm')
-    .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='!item.confirm')
+    .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-4(ng-if='!item.confirm')
       button.btn.btn-block.btn-xs.btn-success(ng-click='bidConfirm(item, true)') BID NOW!
-    .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-0(ng-if='item.confirm')
+    .col-xs-12.col-sm-6.col-sm-offset-6.col-md-4.col-md-offset-4(ng-if='item.confirm')
       button.btn.btn-block.btn-xs.btn-success(ng-click='bid(item)') SUBMIT BID!
       //- {{days ? days + ' days' : ''}} {{hours}}, hours, {{minutes}} minutes, {{seconds}} seconds
       //- (ng-if='isDays(item.endTime)')

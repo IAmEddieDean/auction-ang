@@ -20,7 +20,8 @@
   .col-xs-12(ng-controller='CardCtrl')
     .col-xs-12.col-sm-6.col-md-4.col-lg-3#card(ng-repeat='item in items' ng-if='item.active')
       .col-xs-12#cardhead
-        h4.text-center {{item.title}}
+        h4.text-center {{item.title | limitTo: 17}}
+          span(ng-if='item.title.length > 17') ...
         span {{item.description | limitTo: 40}}
         span(ng-if='item.description.length > 37') ...
       .col-xs-12#cardimg
