@@ -22,7 +22,7 @@ script(type='text/javascript').
             textarea#message-text.form-control(ng-model='question.text')
       .modal-footer
         button.btn.btn-default(type='button', data-dismiss='modal') Close
-        button.btn.btn-primary(type='button' ng-click='send(question)') Send message
+        button.btn.btn-primary(type='button' ng-click='send(question)' data-dismiss='modal') Send message
 .col-xs-12#itemshow
   h2.text-center {{item.title}}
   .row
@@ -92,14 +92,14 @@ script(type='text/javascript').
   .col-xs-12#details
     ul.nav.nav-tabs.navbar-right#myTab
       li#tabby(role='presentation'): a(data-toggle='tab', href='#desc') Description
-      li#tabby(role='presentation'): a(data-toggle='tab', href='#map') Map
+      //- li#tabby(role='presentation'): a(data-toggle='tab', href='#map') Map
       li#tabby(role='presentation'): a(data-toggle='tab', href='#terms') Terms
       //- li#tabby(role='presentation'): a(href='#') Shipping
     .col-xs-12.tab-content
       .col-xs-12#desc.tabCard.tab-pane.fade.in.active
         h5#desc {{item.description}}
-      .col-xs-12#map.tabCard.tab-pane.fade.in
-        h5#map map here
+      //- .col-xs-12#map.tabCard.tab-pane.fade.in
+      //-   h5#map map here
       .col-xs-12#terms.tabCard.tab-pane.fade.in
         h5#terms terms here
         //- .container#details
